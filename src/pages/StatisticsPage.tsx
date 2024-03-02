@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import useSWR from 'swr'
 import { Gradient } from '../components/Gradient'
-import { Icon } from '../components/Icon'
 import type { TimeRange } from '../components/TimeRangePicker'
 import { TimeRangePicker } from '../components/TimeRangePicker'
 import { TopNav } from '../components/TopNav'

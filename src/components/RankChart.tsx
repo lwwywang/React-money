@@ -1,5 +1,3 @@
-import { Money } from './Money'
-
 type Props = {
   className?: string
   items?: { name: string; value: number | string; sign: string }[]

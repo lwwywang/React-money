@@ -19,19 +19,19 @@ export const CurrentUser: React.FC<Props> = ({ className }) => {
     window.location.reload()
   })
   return (
-    <div block className={className} bg="#5C33BE" text-white w="100%" pt-32px pb-44px
+    <div block className={className} bg="#4A7056" text-white w="100%" pt-32px pb-44px
       px-16px>
       {error
         ? (
           <Link to={`/sign_in?from=${from}`} >
             <h2 text-24px>未登录用户</h2>
-            <div text="#CEA1FF">点击这里登录</div>
+            <div text="#ADB5AB">点击这里登录</div>
           </Link>
         )
         : (
           <div onClick={signOut}>
             <h2 text-24px title={name} overflow-hidden text-ellipsis>{name}</h2>
-            <div text="#CEA1FF">点击这里退出登录</div>
+            <div text="#ADB5AB">点击这里退出登录</div>
           </div>
         )
       }
