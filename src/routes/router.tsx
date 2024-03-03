@@ -1,5 +1,6 @@
 import { Outlet, createHashRouter } from 'react-router-dom'
 import type { AxiosError } from 'axios'
+import { Suspense, lazy } from 'react'
 import { Root } from '../components/Root'
 import { WelcomeLayout } from '../layouts/WelcomeLayout'
 import { Home } from '../pages/Home'
@@ -12,16 +13,18 @@ import { Welcome3 } from '../pages/Welcome3'
 import { Welcome4 } from '../pages/Welcome4'
 import { TagsNewPage } from '../pages/TagsNewPage'
 import { TagsEditPage } from '../pages/TagsEditPage'
-import { StatisticsPage } from '../pages/StatisticsPage'
 import { ItemsPageError } from '../pages/ItemsPageError'
 import { ErrorEmptyData, ErrorUnauthorized } from '../errors'
 import { ErrorPage } from '../pages/ErrorPage'
 import { ajax } from '../lib/ajax'
 import { ComingSoonPage } from '../pages/ComingSoonPage'
+import { Loading } from '../components/Loading'
+
+const StatisticsPage = lazy(() => import('../pages/StatisticsPage'))
 
 export const router = createHashRouter([
   { path: '/', element: <Root />, },
-  { path: '/home', element: <Home title="首页" /> },
+  { path: '/home', element: <Home /> },
   {
     path: '/welcome',
     element: <WelcomeLayout />,
@@ -69,9 +72,10 @@ export const router = createHashRouter([
       },
       { path: '/tags/new', element: <TagsNewPage /> },
       { path: '/tags/:id', element: <TagsEditPage /> },
-      { path: '/statistics', element: <StatisticsPage /> },
+      { path: '/statistics', element: <Suspense fallback={<Loading />}><StatisticsPage /></Suspense> },
       { path: '/export', element: <ComingSoonPage /> },
       { path: '/noty', element: <ComingSoonPage /> },
     ]
   },
 ])
+
