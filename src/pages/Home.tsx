@@ -10,12 +10,12 @@ interface Props {
 export const Home: React.FC<Props> = (props) => {
   useTitle(props.title)
   const { get } = useAjax({ showLoading: true, handleError: false })
-  const { data: meData, error: meError } = useSWR('/api/me', async path => {
+  const { data: meData, error: meError } = useSWR('/api/v1/me', async path => {
     // 如果返回 403 就让用户先登录
     const response = await get<Resource<User>>(path)
     return response.data.resource
   })
-  const { data: itemsData, error: itemsError } = useSWR(meData ? '/api/items' : null, async path =>
+  const { data: itemsData, error: itemsError } = useSWR(meData ? '/api/v1/items' : null, async path =>
     (await get<Resources<Item>>(path)).data
   )
 
