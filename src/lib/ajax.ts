@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useLoadingStore } from '../stores/useLoadingStore'
 
 export const ajax = axios.create({
-  baseURL: isDev ? '/' : 'https://mangosteen.fangyinghang.com',
+  baseURL: isDev ? '/' : 'https://mangosteen.cssctrlcv.com',
   headers: {
     'Content-Type': 'application/json'
   },
